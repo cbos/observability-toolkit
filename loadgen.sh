@@ -3,7 +3,7 @@
 BASE_URL=${BASE_URL:-"http://localhost:8080"}
 
 URLS=(
-  "/not_existing"
+  "/random"
   "/"
 )
 URLS_LEN=${#URLS[@]}
