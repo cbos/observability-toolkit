@@ -1,0 +1,14 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /var/log/positions.yaml # This location needs to be writeable by Promtail.
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+
+# /var/log folder is mounted
+# So you can use __path__: /var/log in the scrape config to scrape files.

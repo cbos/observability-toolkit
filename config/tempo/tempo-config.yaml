@@ -1,0 +1,52 @@
+compactor:
+  disabled: true
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+        http:
+
+ingester:
+  trace_idle_period: 35s
+
+overrides:
+  defaults:
+    metrics_generator:
+      processors: [service-graphs, span-metrics] # enables metrics generator and metrics summary
+
+server:
+  http_listen_port: 3200
+
+storage:
+  trace:
+    backend: local
+    pool:
+      queue_depth: 2000
+    wal:
+      path: /tmp/tempo/wal
+    local:
+      path: /tmp/tempo/blocks
+
+# This is supposed to turn on generating metrics so that service graphs
+#   (a la Kiali) can be generated, but it results in divide by 0 errors
+#   which also breaks the main tracing feature so it is disabled for now.
+#metrics_generator:
+#  processor:
+#    service_graphs:
+
+metrics_generator:
+  storage:
+    path: /tmp/tempo/generator/wal
+    remote_write:
+      - url: http://prometheus:9090/api/v1/write
+        send_exemplars: true
+  registry:
+    # A list of labels that will be added to all generated metrics.
+    external_labels:
+      source: tempo
+  processor:
+    service_graphs:
+    span_metrics:
+      enable_target_info: true

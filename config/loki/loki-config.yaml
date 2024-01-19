@@ -1,0 +1,54 @@
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  # Read timeout for HTTP server
+  http_server_read_timeout: 3m
+  # Write timeout for HTTP server
+  http_server_write_timeout: 3m
+
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /loki
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks
+      rules_directory: /loki/rules
+  replication_factor: 1
+  ring:
+    kvstore:
+      store: inmemory
+
+ingester:
+  lifecycler:
+    address: 127.0.0.1
+    ring:
+      kvstore:
+        store: inmemory
+      replication_factor: 1
+    final_sleep: 0s
+  chunk_idle_period: 1m
+  wal:
+    enabled: true
+    dir: /loki/wal
+
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: tsdb
+      object_store: filesystem
+      schema: v12
+      index:
+        prefix: index_
+        period: 24h
+
+limits_config:
+  ingestion_rate_mb: 1024
+  ingestion_burst_size_mb: 1024
+  enforce_metric_name: false
+  unordered_writes: true
+  retention_period: 150d
+
+compactor:
+  retention_enabled: true
