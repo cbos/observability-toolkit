@@ -1,16 +1,56 @@
 # Observability Toolkit for local usage
-A set of tools which can be used for local development which help with more insights in Observability
+A set of tools which can be used for local development which help with more insights in Observability.
 
 ![](docs/setup.png)
 
-# Todo
+# Explanation of the components
 
-- [ ] Add promtail
-- [ ] Update documentation
-- [ ] Spanmetrics and servicegraph with OpenTelemetry Collector instead of Tempo (make tail sampling possible)
-- [ ] Default dashboards
+## OpenTelemetry Collector
+This is the main entry point where all observability signals are collected.
+With all kind of configuration you can choose what to do with it.
+
+OpenTelemetry Collector sends the data to:
+- Loki   
+  Loki is a log storage created by Grafana
+- Tempo   
+  Tempo is a trace storage created by Grafana
+- Prometheus   
+  Prometheus is a metric storage
+
+## Grafana
+Grafana is the visualisation tool to get insights in all observability metrics collected and stored.
+
+# Correlation
+
+The power of combining metrics, logs and traces together in 1 setup is that you can correlate the signals. 
+That is part of this setup by default and with an example application showcased as well.
+
+# Start the setup
+
+```shell
+git clone https://github.com/cbos/observability-toolkit
+cd observability-toolkit
+docker-compose up -d 
+
+```
+Now you can open http://localhost:3000 to open Grafana.
+
+# Run the demo app and generate load
+```shell
+./run-observabilty-demo-app.sh 
+```
+
+To generate load:
+```shell
+./loadgen.sh 
+```
+
+# Default dashboards
+- http://localhost:3000/d/observabilitystackOtelCollector/opentelemetry-collector
 
 # Settings 
+
+An number of settings can be tweaked by just setting environment variables.
 
 ```shell
 # Specify the Grafana host port you want, other then the default 3000
@@ -52,6 +92,20 @@ docker-compose up -d
 | PROMTAIL_MEMORY_RESERVATION       | 50m                                         | Memory reservation for Promtail                                                           |
 | PROMTAIL_CPUS                     | 1                                           | Number of CPUs for Promtail                                                               |
 
+# Wishlist
+
+
+- [ ] Spanmetrics and servicegraph with OpenTelemetry Collector instead of Tempo (make tail sampling possible)
+- [ ] Default dashboards
+
+
 
 # Inspired by 
 
+This setup is created based on what I already used locally.    
+The idea of adding a simple application for showcasing the setup comes fromL [grafana/docker-otel-lgtm](https://github.com/grafana/docker-otel-lgtm)    
+The script for generating random load with a simple curl command comes from the [Grafana Beyla project](https://github.com/grafana/beyla/blob/main/examples/greeting-apps/loadgen.sh)
+
+The OpenTelemetry Collector Grafana Dashboard is coming from
+https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/    
+But it required some changes to get it working in this setup.
