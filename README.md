@@ -47,6 +47,7 @@ To generate load:
 
 # Default dashboards
 - http://localhost:3000/d/observabilitystackOtelCollector/opentelemetry-collector
+![](docs/opentelemetry_collector_dashboard.png)
 
 # Settings 
 
