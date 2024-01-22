@@ -1,3 +1,14 @@
+<div align="center">
+  <img
+    src="./docs/logo.png"
+    alt="Observability Toolkit"
+    width="220px"
+    padding="20px"
+  />
+  <h1>Observability Toolkit</h1>
+  <p>Observability stack for local development and troubleshooting toolkit.</p>
+</div>
+
 # Observability Toolkit for local usage
 A set of tools which can be used for local development which help with more insights in Observability.
 
