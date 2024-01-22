@@ -1,10 +1,5 @@
 <div align="center">
-  <img
-    src="./docs/logo.png"
-    alt="Observability Toolkit"
-    width="220px"
-    padding="20px"
-  />
+  <img src="./docs/logo.png" alt="Observability Toolkit"/>
 </div>
 
 # Observability Toolkit for local usage
@@ -35,9 +30,9 @@ The power of combining metrics, logs and traces together in 1 setup is that you 
 The advantage of OpenTelemetry is standardisation on naming, that makes it way easier to hop between the metrics, traces and logs in all directions.
 That will help to find the problems.
 
-Configuration in Grafana can help to make it easier to hop from metrics (with exemplars) to traces for example (see [prometheus.yaml](./config/grafana/provisioning/datasources/prometheus.yaml)). 
-That is already configured in this setup. Same holds from logs to traces (see [loki.yaml](./config/grafana/provisioning/datasources/loki.yaml)).
-Also the setup of spanmetrics and servicegraph is already configured (see [tempo.yaml](./config/grafana/provisioning/datasources/tempo.yaml))
+Configuration in Grafana can help to make it easier to hop from metrics (with exemplars) to traces for example (see [prometheus.yaml](./config/grafana/provisioning/datasources/prometheus.yaml)).    
+That is already configured in this setup. Same holds from logs to traces (see [loki.yaml](./config/grafana/provisioning/datasources/loki.yaml)).   
+Also the setup of spanmetrics and servicegraph is already configured (see [tempo.yaml](./config/grafana/provisioning/datasources/tempo.yaml)).   
 
 # Start the setup
 
