@@ -5,8 +5,6 @@
     width="220px"
     padding="20px"
   />
-  <h1>Observability Toolkit</h1>
-  <p>Observability stack for local development and troubleshooting toolkit.</p>
 </div>
 
 # Observability Toolkit for local usage
