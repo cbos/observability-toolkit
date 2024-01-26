@@ -7,6 +7,10 @@ A set of tools which can be used for local development which help with more insi
 
 ![](docs/setup.png)
 
+# Background
+
+To get to know more about the background about this setup, please read: https://ceesbos.nl/posts/20240126-observability-toolkit/
+
 # Explanation of the components
 
 ## OpenTelemetry Collector
