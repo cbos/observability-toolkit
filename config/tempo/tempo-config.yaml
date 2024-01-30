@@ -29,13 +29,6 @@ storage:
     local:
       path: /tmp/tempo/blocks
 
-# This is supposed to turn on generating metrics so that service graphs
-#   (a la Kiali) can be generated, but it results in divide by 0 errors
-#   which also breaks the main tracing feature so it is disabled for now.
-#metrics_generator:
-#  processor:
-#    service_graphs:
-
 metrics_generator:
   storage:
     path: /tmp/tempo/generator/wal

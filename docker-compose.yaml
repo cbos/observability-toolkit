@@ -68,7 +68,6 @@ services:
       - '--web.enable-remote-write-receiver'
       # https://prometheus.io/docs/prometheus/latest/feature_flags/#exemplars-storage
       - '--enable-feature=exemplar-storage'
-      - '--enable-feature=native-histograms'
 
   grafana:
     image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:10.2.3}"
