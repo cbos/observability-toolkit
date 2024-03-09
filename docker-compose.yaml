@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   loki:
-    image: "${LOKI_IMAGE_NAME:-grafana/loki:2.9.4}"
+    image: "${LOKI_IMAGE_NAME:-grafana/loki:2.9.5}"
     mem_limit: "${LOKI_MEMORY_LIMIT:-200m}"
     mem_reservation: "${LOKI_MEMORY_RESERVATION:-50m}"
     cpus: "${LOKI_CPUS:-1}"
@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
 
   tempo:
-    image: "${TEMPO_IMAGE_NAME:-grafana/tempo:2.3.1}"
+    image: "${TEMPO_IMAGE_NAME:-grafana/tempo:2.4.0}"
     mem_limit: "${TEMPO_MEMORY_LIMIT:-1g}"
     mem_reservation: "${TEMPO_MEMORY_RESERVATION:-50m}"
     cpus: "${TEMPO_CPUS:-1}"
@@ -70,7 +70,7 @@ services:
       - '--enable-feature=exemplar-storage'
 
   grafana:
-    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:10.3.3}"
+    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:10.4.0}"
     mem_limit: "${GRAFANA_MEMORY_LIMIT:-1g}"
     mem_reservation: "${GRAFANA_MEMORY_RESERVATION:-200m}"
     cpus: "${GRAFANA_CPUS:-1}"
@@ -96,7 +96,7 @@ services:
     restart: unless-stopped
 
   opentelemetry-collector:
-    image: "${OTEL_COLLECTOR_IMAGE_NAME:-otel/opentelemetry-collector-contrib:0.94.0}"
+    image: "${OTEL_COLLECTOR_IMAGE_NAME:-otel/opentelemetry-collector-contrib:0.96.0}"
     mem_limit: "${OTEL_COLLECTOR_MEMORY_LIMIT:-200m}"
     mem_reservation: "${OTEL_COLLECTOR_MEMORY_RESERVATION:-50m}"
     cpus: "${OTEL_COLLECTOR_CPUS:-1}"
@@ -109,7 +109,7 @@ services:
       - "${OTEL_COLLECTOR_HOST_PORT_HTTP:-4318}:4318"         # otlp receiver HTTP
 
   promtail:
-    image: "${PROMTAIL_IMAGE_NAME:-grafana/promtail:2.9.4}"
+    image: "${PROMTAIL_IMAGE_NAME:-grafana/promtail:2.9.5}"
     command: -config.file=/etc/promtail/promtail-config.yaml
     mem_limit: "${PROMTAIL_MEMORY_LIMIT:-400m}"
     mem_reservation: "${PROMTAIL_MEMORY_RESERVATION:-50m}"
