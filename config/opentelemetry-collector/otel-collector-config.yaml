@@ -35,6 +35,10 @@ exporters:
   prometheusremotewrite:
     endpoint: "http://prometheus:9090/api/v1/write"
 
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+
 processors:
   batch:
     send_batch_size: 50
@@ -64,7 +68,7 @@ service:
       processors:
         - batch
         - memory_limiter
-      exporters: [prometheusremotewrite]
+      exporters: [prometheusremotewrite, prometheus]
     logs:
       receivers: [otlp]
       processors:
