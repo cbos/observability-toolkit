@@ -14,7 +14,7 @@ ingester:
 overrides:
   defaults:
     metrics_generator:
-      processors: [service-graphs, span-metrics] # enables metrics generator and metrics summary
+      processors: [service-graphs, span-metrics, local-blocks]
 
 server:
   http_listen_port: 3200
@@ -43,3 +43,7 @@ metrics_generator:
     service_graphs:
     span_metrics:
       enable_target_info: true
+    local_blocks:
+      filter_server_spans: false
+  traces_storage:
+    path: /tmp/tempo/generator/traces

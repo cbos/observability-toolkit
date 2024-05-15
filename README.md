@@ -85,7 +85,7 @@ docker-compose up -d
 | LOKI_MEMORY_LIMIT                    | 200m                                        | Memory limit for Loki                                                                                                   |
 | LOKI_MEMORY_RESERVATION              | 50m                                         | Memory reservation for Loki                                                                                             |
 | LOKI_CPUS                            | 1                                           | Number of CPUs for Loki                                                                                                 |
-| TEMPO_IMAGE_NAME                     | grafana/tempo:2.4.0                         | Tempo docker image                                                                                                      |
+| TEMPO_IMAGE_NAME                     | grafana/tempo:2.4.2                         | Tempo docker image                                                                                                      |
 | TEMPO_MEMORY_LIMIT                   | 1g                                          | Memory limit for Tempo                                                                                                  |
 | TEMPO_MEMORY_RESERVATION             | 50m                                         | Memory reservation for Tempo                                                                                            |
 | TEMPO_CPUS                           | 1                                           | Number of CPUs for Tempo                                                                                                |
