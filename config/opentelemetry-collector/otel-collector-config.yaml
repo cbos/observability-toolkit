@@ -26,6 +26,9 @@ exporters:
   file/devnull:
     path: /dev/null
 
+  otlphttp:
+    endpoint: http://loki:3100/otlp
+
   loki:
     endpoint: "http://loki:3100/loki/api/v1/push"
 
@@ -67,4 +70,4 @@ service:
       processors:
         - batch
         - memory_limiter
-      exporters: [loki]
+      exporters: [otlphttp]

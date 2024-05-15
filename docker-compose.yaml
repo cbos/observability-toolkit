@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   loki:
-    image: "${LOKI_IMAGE_NAME:-grafana/loki:2.9.5}"
+    image: "${LOKI_IMAGE_NAME:-grafana/loki:3.0.0}"
     mem_limit: "${LOKI_MEMORY_LIMIT:-200m}"
     mem_reservation: "${LOKI_MEMORY_RESERVATION:-50m}"
     cpus: "${LOKI_CPUS:-1}"

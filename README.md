@@ -81,7 +81,7 @@ docker-compose up -d
 
 | Variable name                        | Default                                     | Description                                                                                                             |
 |--------------------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|  
-| LOKI_IMAGE_NAME                      | grafana/loki:2.9.5                          | Loki docker image                                                                                                       |
+| LOKI_IMAGE_NAME                      | grafana/loki:3.0.0                          | Loki docker image                                                                                                       |
 | LOKI_MEMORY_LIMIT                    | 200m                                        | Memory limit for Loki                                                                                                   |
 | LOKI_MEMORY_RESERVATION              | 50m                                         | Memory reservation for Loki                                                                                             |
 | LOKI_CPUS                            | 1                                           | Number of CPUs for Loki                                                                                                 |
