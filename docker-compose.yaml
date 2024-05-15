@@ -70,7 +70,7 @@ services:
       - '--enable-feature=exemplar-storage'
 
   grafana:
-    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:10.4.0}"
+    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:11.0.0}"
     mem_limit: "${GRAFANA_MEMORY_LIMIT:-1g}"
     mem_reservation: "${GRAFANA_MEMORY_RESERVATION:-200m}"
     cpus: "${GRAFANA_CPUS:-1}"

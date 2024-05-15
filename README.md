@@ -93,7 +93,7 @@ docker-compose up -d
 | PROMETHEUS_MEMORY_LIMIT              | 250m                                        | Memory limit for Prometheus                                                                                             |
 | PROMETHEUS_MEMORY_RESERVATION        | 75m                                         | Memory reservation for Prometheus                                                                                       |
 | PROMETHEUS_CPUS                      | 1                                           | Number of CPUs for Prometheus                                                                                           |
-| GRAFANA_IMAGE_NAME                   | grafana/grafana:10.4.0                      | Grafana docker image                                                                                                    |
+| GRAFANA_IMAGE_NAME                   | grafana/grafana:11.0.0                      | Grafana docker image                                                                                                    |
 | GRAFANA_MEMORY_LIMIT                 | 1g                                          | Memory limit for Grafana                                                                                                |
 | GRAFANA_MEMORY_RESERVATION           | 200m                                        | Memory reservation for Grafana                                                                                          |
 | GRAFANA_CPUS                         | 1                                           | Number of CPUs for Grafana                                                                                              |
