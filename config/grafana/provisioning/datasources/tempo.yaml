@@ -23,11 +23,6 @@ datasources:
         query: '{$${__tags}} | trace_id=`$${__trace.traceId}`'
       tracesToMetrics:
         datasourceUid: 'prometheus'
-        # It is possible to add more mapping information
-        #        tags: [{ key: 'service.name', value: 'service' }, { key: 'job' }]
-        #        queries:
-        #          - name: 'Sample query'
-        #            query: 'sum(rate(tempo_spanmetrics_latency_bucket{$__tags}[5m]))'
       serviceMap:
         datasourceUid: 'prometheus'
       search:
@@ -36,3 +31,10 @@ datasources:
         enabled: true
       lokiSearch:
         datasourceUid: 'loki'
+      tracesToProfiles:
+        customQuery: false
+        datasourceUid: "pyroscope"
+        profileTypeId: "process_cpu:cpu:nanoseconds:cpu:nanoseconds"
+        tags:
+          - key: "host.name"
+            value: "hostname"
