@@ -10,17 +10,17 @@ datasources:
     isDefault: false
     jsonData:
       httpMethod: GET
-      tracesToLogs:
+      tracesToLogsV2:
+        # Field with an internal link pointing to a logs data source in Grafana.
+        # datasourceUid value must match the uid value of the logs data source.
         datasourceUid: 'loki'
-        #        tags: ['job', 'instance', 'pod', 'namespace']
-        #        mappedTags: [{ key: 'service.name', value: 'service' }]
+        spanStartTimeShift: '-1h'
+        spanEndTimeShift: '1h'
         tags: []
-        mappedTags: []
-        mapTagNamesEnabled: true
-        spanStartTimeShift: '-5m'
-        spanEndTimeShift: '5m'
-        filterByTraceID: true
+        filterByTraceID: false
         filterBySpanID: false
+        customQuery: true
+        query: '{$${__tags}} | trace_id=`$${__trace.traceId}`'
       tracesToMetrics:
         datasourceUid: 'prometheus'
         # It is possible to add more mapping information
