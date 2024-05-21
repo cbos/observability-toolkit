@@ -14,3 +14,9 @@ datasources:
           matcherRegex: "traceid[\": ]*(\\w+)"
           url: '$${__value.raw}'
           datasourceUid: Tempo
+        - name: 'trace_id'
+          matcherRegex: "trace_id"
+          matcherType: "label"
+          url: '$${__value.raw}'
+          datasourceUid: Tempo
+          "urlDisplayLabel": "Open Trace in traceview"
