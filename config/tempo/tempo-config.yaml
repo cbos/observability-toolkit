@@ -41,6 +41,15 @@ metrics_generator:
       source: tempo
   processor:
     service_graphs:
+      wait: 10s
+      max_items: 10000
+      workers: 10
+      dimensions: []
+      #enable_client_server_prefix: false
+      peer_attributes:
+        - peer.service
+        - db.name
+        - db.system
     span_metrics:
       enable_target_info: true
     local_blocks:
