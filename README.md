@@ -79,20 +79,20 @@ docker-compose up -d
 # Now you can open Grafana at http://localhost:3004
 ```
 
-| Variable name                        | Default                                     | Description                                                                                                             |
-|--------------------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|  
-| LOKI_IMAGE_NAME                      | grafana/loki:3.2.0                          | Loki docker image                                                                                                       |
-| TEMPO_IMAGE_NAME                     | grafana/tempo:2.6.0                         | Tempo docker image                                                                                                      |
-| PROMETHEUS_IMAGE_NAME                | prom/prometheus:v2.49.1                     | Prometheus docker image                                                                                                 |
-| GRAFANA_IMAGE_NAME                   | grafana/grafana:11.2.2                      | Grafana docker image                                                                                                    |
-| GRAFANA_HOST_PORT                    | 3000                                        | Port on host on which Grafana will be available                                                                         |
-| OTEL_COLLECTOR_IMAGE_NAME            | otel/opentelemetry-collector-contrib:0.96.0 | OpenTelemetry Collector docker image                                                                                    |
-| OTEL_COLLECTOR_HOST_PORT_GRPC        | 4317                                        | Port on host on which OpenTelemetry Collector will be available for OTLP format with GRPC                               |
-| OTEL_COLLECTOR_HOST_PORT_HTTP        | 4318                                        | Port on host on which OpenTelemetry Collector will be available for OTLP format with HTTP                               |
-| OTEL_COLLECTOR_HOST_PORT_PROMETHEUS  | 8889                                        | Port on host on which OpenTelemetry Collector will listen to expose prometheus data, like http://localhost:8889/metrics |
-| PROMTAIL_IMAGE_NAME                  | grafana/promtail:2.9.5                      | Promtail docker image                                                                                                   |
-| PYROSCOPE_IMAGE_NAME                 | grafana/pyroscope:1.5.0                     | Pyroscope docker image                                                                                                  |
-| PYROSCOPE_PORT                       | 4040                                        | Port on which Pyroscope is available                                                                                    |
+| Variable name                        | Default                                      | Description                                                                                                             |
+|--------------------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|  
+| LOKI_IMAGE_NAME                      | grafana/loki:3.2.0                           | Loki docker image                                                                                                       |
+| TEMPO_IMAGE_NAME                     | grafana/tempo:2.6.0                          | Tempo docker image                                                                                                      |
+| PROMETHEUS_IMAGE_NAME                | prom/prometheus:v2.49.1                      | Prometheus docker image                                                                                                 |
+| GRAFANA_IMAGE_NAME                   | grafana/grafana:11.2.2                       | Grafana docker image                                                                                                    |
+| GRAFANA_HOST_PORT                    | 3000                                         | Port on host on which Grafana will be available                                                                         |
+| OTEL_COLLECTOR_IMAGE_NAME            | otel/opentelemetry-collector-contrib:0.111.0 | OpenTelemetry Collector docker image                                                                                    |
+| OTEL_COLLECTOR_HOST_PORT_GRPC        | 4317                                         | Port on host on which OpenTelemetry Collector will be available for OTLP format with GRPC                               |
+| OTEL_COLLECTOR_HOST_PORT_HTTP        | 4318                                         | Port on host on which OpenTelemetry Collector will be available for OTLP format with HTTP                               |
+| OTEL_COLLECTOR_HOST_PORT_PROMETHEUS  | 8889                                         | Port on host on which OpenTelemetry Collector will listen to expose prometheus data, like http://localhost:8889/metrics |
+| PROMTAIL_IMAGE_NAME                  | grafana/promtail:2.9.5                       | Promtail docker image                                                                                                   |
+| PYROSCOPE_IMAGE_NAME                 | grafana/pyroscope:1.5.0                      | Pyroscope docker image                                                                                                  |
+| PYROSCOPE_PORT                       | 4040                                         | Port on which Pyroscope is available                                                                                    |
 
 
 # Inspired by 

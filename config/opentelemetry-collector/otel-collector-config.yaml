@@ -2,7 +2,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: opentelemetry-collector:4317 # Using the service name from your Docker compose file
       http:
+        endpoint: opentelemetry-collector:4318 # Using the service name from your Docker compose file
 
   prometheus/otel:
     config:
@@ -18,10 +20,10 @@ exporters:
     tls:
       insecure: true
 
-  logging/debug:
-    verbosity: detailed
-    sampling_initial: 5
-    sampling_thereafter: 200
+#  debug:
+#    verbosity: detailed
+#    sampling_initial: 5
+#    sampling_thereafter: 200
 
   file/devnull:
     path: /dev/null
@@ -43,8 +45,6 @@ exporters:
 
 processors:
   batch:
-    send_batch_size: 50
-    timeout: 5s
 
   memory_limiter:
     check_interval: 2s

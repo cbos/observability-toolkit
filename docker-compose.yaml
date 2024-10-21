@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   loki:
     image: "${LOKI_IMAGE_NAME:-grafana/loki:3.2.0}"
@@ -85,7 +83,7 @@ services:
     restart: unless-stopped
 
   opentelemetry-collector:
-    image: "${OTEL_COLLECTOR_IMAGE_NAME:-otel/opentelemetry-collector-contrib:0.96.0}"
+    image: "${OTEL_COLLECTOR_IMAGE_NAME:-otel/opentelemetry-collector-contrib:0.111.0}"
     command: [ "--config=/etc/otel-collector-config.yaml" ]
     volumes:
       - ./config/opentelemetry-collector/otel-collector-config.yaml:/etc/otel-collector-config.yaml
