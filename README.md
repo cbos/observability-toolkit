@@ -50,7 +50,7 @@ Now you can open http://localhost:3000 to open Grafana.
 
 # Run the demo app and generate load
 There is a simple demo app, which helps to generate some traces, logs and metrics, but is not intended to show all capabilities.    
-You can use the [demo services of OpenTelemetry](https://opentelemetry.io/docs/demo/) to see what is all available for all languages.
+
 
 ```shell
 ./run-observabilty-demo-app.sh 
@@ -59,6 +59,34 @@ You can use the [demo services of OpenTelemetry](https://opentelemetry.io/docs/d
 To generate load:
 ```shell
 ./loadgen.sh 
+```
+
+## OpenTelemetry Demo
+You can use the [demo services of OpenTelemetry](https://opentelemetry.io/docs/demo/) to see what is all available for all languages.
+You can change the file: `src/otelcollector/otelcol-config-extras.yml` and add this:
+
+```yaml
+exporters:
+  otlp/observabilitytoolkit:
+   # This assumes that the setup is running at the docker host on port 4317 (which is default of observability-toolkit)
+   endpoint: "host.docker.internal:4317"
+   tls:
+    insecure: true
+
+service:
+  pipelines:
+   traces:
+    receivers: [otlp]
+    processors: [batch]
+    exporters: [otlp, otlp/observabilitytoolkit]
+   metrics:
+    receivers: [httpcheck/frontendproxy, redis, otlp]
+    processors: [batch]
+    exporters: [otlphttp/prometheus, otlp/observabilitytoolkit]
+   logs:
+    receivers: [otlp]
+    processors: [batch]
+    exporters: [otlp/observabilitytoolkit]
 ```
 
 # Default dashboards
