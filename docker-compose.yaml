@@ -1,6 +1,6 @@
 services:
   loki:
-    image: "${LOKI_IMAGE_NAME:-grafana/loki:3.2.0}"
+    image: "${LOKI_IMAGE_NAME}"
     healthcheck:
       test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3100/ready || exit 1" ]
       start_period: 20s
@@ -14,8 +14,20 @@ services:
       - data-loki:/loki
     restart: unless-stopped
 
+  # Tempo runs as user 10001, and docker compose creates the volume as root.
+  # As such, we need to chown the volume in order for Tempo to start correctly.
+  tempo-init:
+    image: &tempoImage ${TEMPO_IMAGE_NAME}
+    user: root
+    entrypoint:
+      - "chown"
+      - "10001:10001"
+      - "/var/tempo"
+    volumes:
+      - data-tempo:/var/tempo
+
   tempo:
-    image: "${TEMPO_IMAGE_NAME:-grafana/tempo:2.6.0}"
+    image: *tempoImage
     healthcheck:
       test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3200/ready || exit 1" ]
       start_period: 20s
@@ -27,9 +39,11 @@ services:
     volumes:
       - ./config/tempo/tempo-config.yaml:/etc/tempo.yaml
       - data-tempo:/tmp/tempo
+    depends_on:
+      - tempo-init
 
   prometheus:
-    image: "${PROMETHEUS_IMAGE_NAME:-prom/prometheus:v2.49.1}"
+    image: "${PROMETHEUS_IMAGE_NAME}"
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "wget", "-q", "--spider", "http://localhost:9090/-/healthy" ]
@@ -59,7 +73,7 @@ services:
       - '--enable-feature=exemplar-storage'
 
   grafana:
-    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:11.3.1}"
+    image: "${GRAFANA_IMAGE_NAME}"
     healthcheck:
       test: [ "CMD", "wget", "-q", "--spider", "http://localhost:3000" ]
       start_period: 20s
@@ -67,7 +81,7 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - "${GRAFANA_HOST_PORT:-3000}:3000"
+      - "${GRAFANA_HOST_PORT}:3000"
     environment:
       GF_AUTH_ANONYMOUS_ENABLED: true
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
@@ -83,31 +97,31 @@ services:
     restart: unless-stopped
 
   opentelemetry-collector:
-    image: "${OTEL_COLLECTOR_IMAGE_NAME:-otel/opentelemetry-collector-contrib:0.111.0}"
+    image: "${OTEL_COLLECTOR_IMAGE_NAME}"
     command: [ "--config=/etc/otel-collector-config.yaml" ]
     volumes:
       - ./config/opentelemetry-collector/otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
-      - "${OTEL_COLLECTOR_HOST_PORT_PROMETHEUS:-8889}:8889"   # Prometheus exporter metrics
-      - "${OTEL_COLLECTOR_HOST_PORT_GRPC:-4317}:4317"         # otlp receiver GRPC
-      - "${OTEL_COLLECTOR_HOST_PORT_HTTP:-4318}:4318"         # otlp receiver HTTP
+      - "${OTEL_COLLECTOR_HOST_PORT_PROMETHEUS}:8889"   # Prometheus exporter metrics
+      - "${OTEL_COLLECTOR_HOST_PORT_GRPC}:4317"         # otlp receiver GRPC
+      - "${OTEL_COLLECTOR_HOST_PORT_HTTP}:4318"         # otlp receiver HTTP
 
   promtail:
-    image: "${PROMTAIL_IMAGE_NAME:-grafana/promtail:2.9.5}"
+    image: "${PROMTAIL_IMAGE_NAME}"
     command: -config.file=/etc/promtail/promtail-config.yaml
     volumes:
       - ./promtail_input:/var/log
       - ./config/promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
 
   pyroscope:
-    image: "${PYROSCOPE_IMAGE_NAME:-grafana/pyroscope:1.5.0}"
+    image: "${PYROSCOPE_IMAGE_NAME}"
     environment:
       JAEGER_AGENT_HOST: tempo
       JAEGER_SAMPLER_TYPE: const
       JAEGER_SAMPLER_PARAM: 1
     command: [ "-config.file=/etc/pyroscope.yml" ]
     ports:
-      - "${PYROSCOPE_PORT:-4040}:4040"
+      - "${PYROSCOPE_PORT}:4040"
     volumes:
       - ./config/pyroscope/pyroscope.yml:/etc/pyroscope.yml
 
