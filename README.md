@@ -112,7 +112,7 @@ docker-compose up -d
 | LOKI_IMAGE_NAME                      | grafana/loki:3.2.0                           | Loki docker image                                                                                                       |
 | TEMPO_IMAGE_NAME                     | grafana/tempo:2.6.0                          | Tempo docker image                                                                                                      |
 | PROMETHEUS_IMAGE_NAME                | prom/prometheus:v2.49.1                      | Prometheus docker image                                                                                                 |
-| GRAFANA_IMAGE_NAME                   | grafana/grafana:11.2.2                       | Grafana docker image                                                                                                    |
+| GRAFANA_IMAGE_NAME                   | grafana/grafana:11.3.1                       | Grafana docker image                                                                                                    |
 | GRAFANA_HOST_PORT                    | 3000                                         | Port on host on which Grafana will be available                                                                         |
 | OTEL_COLLECTOR_IMAGE_NAME            | otel/opentelemetry-collector-contrib:0.111.0 | OpenTelemetry Collector docker image                                                                                    |
 | OTEL_COLLECTOR_HOST_PORT_GRPC        | 4317                                         | Port on host on which OpenTelemetry Collector will be available for OTLP format with GRPC                               |

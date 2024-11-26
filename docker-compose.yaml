@@ -59,7 +59,7 @@ services:
       - '--enable-feature=exemplar-storage'
 
   grafana:
-    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:11.2.2}"
+    image: "${GRAFANA_IMAGE_NAME:-grafana/grafana:11.3.1}"
     healthcheck:
       test: [ "CMD", "wget", "-q", "--spider", "http://localhost:3000" ]
       start_period: 20s
