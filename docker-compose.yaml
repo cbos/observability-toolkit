@@ -1,3 +1,5 @@
+name: observability-toolkit
+
 services:
   loki:
     image: "${LOKI_IMAGE_NAME}"
@@ -83,6 +85,7 @@ services:
     ports:
       - "${GRAFANA_HOST_PORT}:3000"
     environment:
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: observability-app,ing-observability-app
       GF_AUTH_ANONYMOUS_ENABLED: true
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
       GF_AUTH_ORG_ROLE: Admin
@@ -94,6 +97,7 @@ services:
     volumes:
       - ./config/grafana/provisioning/:/etc/grafana/provisioning/
       - data-grafana:/var/lib/grafana
+      - ./config/grafana/observability-app:/var/lib/grafana/plugins/observability-app
     restart: unless-stopped
 
   opentelemetry-collector:
