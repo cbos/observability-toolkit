@@ -340,7 +340,21 @@
           ],
           "title": "Duration (95% and avg)",
           "type": "timeseries"
-        },
+        }
+      ],
+      "title": "Incoming HTTP requests (server)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 26,
+      "panels": [
         {
           "datasource": {
             "type": "prometheus",
@@ -407,7 +421,7 @@
             "h": 10,
             "w": 8,
             "x": 0,
-            "y": 9
+            "y": 1
           },
           "id": 15,
           "options": {
@@ -508,7 +522,7 @@
             "h": 10,
             "w": 8,
             "x": 8,
-            "y": 9
+            "y": 1
           },
           "id": 19,
           "options": {
@@ -606,13 +620,38 @@
               },
               "unit": "s"
             },
-            "overrides": []
+            "overrides": [
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "GET /random/{id} - 200"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
             "h": 8,
             "w": 8,
             "x": 16,
-            "y": 9
+            "y": 1
           },
           "id": 20,
           "options": {
@@ -647,7 +686,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Incoming HTTP requests (server)",
+      "title": "Incoming HTTP requests - per endpoint (server)",
       "type": "row"
     },
     {
@@ -656,7 +695,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 2
       },
       "id": 1,
       "panels": [
@@ -726,7 +765,7 @@
             "h": 8,
             "w": 8,
             "x": 0,
-            "y": 65
+            "y": 3
           },
           "id": 16,
           "options": {
@@ -824,7 +863,7 @@
             "h": 8,
             "w": 8,
             "x": 8,
-            "y": 65
+            "y": 3
           },
           "id": 17,
           "options": {
@@ -925,7 +964,7 @@
             "h": 8,
             "w": 8,
             "x": 16,
-            "y": 65
+            "y": 3
           },
           "id": 18,
           "options": {
@@ -982,7 +1021,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 3
       },
       "id": 3,
       "panels": [],
@@ -1021,7 +1060,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 9,
       "options": {
@@ -1119,7 +1158,7 @@
         "h": 8,
         "w": 10,
         "x": 4,
-        "y": 3
+        "y": 4
       },
       "id": 7,
       "options": {
@@ -1212,7 +1251,7 @@
         "h": 8,
         "w": 10,
         "x": 14,
-        "y": 3
+        "y": 4
       },
       "id": 8,
       "options": {
@@ -1331,7 +1370,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 24,
       "options": {
@@ -1456,7 +1495,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 12
       },
       "id": 25,
       "options": {
@@ -1578,7 +1617,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "id": 10,
       "interval": "2m",
@@ -1676,7 +1715,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 20
       },
       "id": 11,
       "interval": "2m",
@@ -1712,201 +1751,202 @@
       "type": "timeseries"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "id": 4,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 5,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 29
+          },
+          "id": 5,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "editorMode": "code",
+              "expr": "http_server_tomcat_threads{job=~\"$service\"}",
+              "legendFormat": "{{state}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Tomcat threads",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 5,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 29
+          },
+          "id": 6,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "editorMode": "code",
+              "expr": "http_server_tomcat_sessions_activeSessions{job=~\"$service\"}",
+              "legendFormat": "Active sessions",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Active sessions",
+          "type": "timeseries"
+        }
+      ],
       "title": "Tomcat",
       "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 5,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 28
-      },
-      "id": 5,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.3.1",
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "http_server_tomcat_threads{job=~\"$service\"}",
-          "legendFormat": "{{state}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Tomcat threads",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 5,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 28
-      },
-      "id": 6,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.3.1",
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "http_server_tomcat_sessions_activeSessions{job=~\"$service\"}",
-          "legendFormat": "Active sessions",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Active sessions",
-      "type": "timeseries"
     },
     {
       "collapsed": true,
@@ -1914,7 +1954,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 29
       },
       "id": 21,
       "panels": [
@@ -1931,7 +1971,7 @@
             "h": 13,
             "w": 24,
             "x": 0,
-            "y": 160
+            "y": 186
           },
           "id": 23,
           "options": {
@@ -1966,6 +2006,7 @@
     }
   ],
   "preload": false,
+  "refresh": "5s",
   "schemaVersion": 40,
   "tags": [
     "JVM",
@@ -2001,6 +2042,6 @@
   "timezone": "browser",
   "title": "Service details",
   "uid": "ee5faal2qgxkwe",
-  "version": 27,
+  "version": 29,
   "weekStart": ""
 }
