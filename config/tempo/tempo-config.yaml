@@ -18,6 +18,7 @@ overrides:
 
 server:
   http_listen_port: 3200
+  log_level: info
 
 storage:
   trace:
@@ -41,7 +42,7 @@ metrics_generator:
       source: tempo
   processor:
     service_graphs:
-      wait: 10s
+      wait: 30s
       max_items: 10000
       workers: 10
       dimensions: []
@@ -50,9 +51,19 @@ metrics_generator:
         - peer.service
         - db.name
         - db.system
+        - messaging.destination.name
+      # Enables additional labels for services and virtual nodes. Default false
+      enable_virtual_node_label: true
+      # If enabled another histogram will be produced for interactions over messaging systems middlewares
+      # If this feature is relevant over long time ranges (high latencies) - consider increasing
+      # `wait` value for this processor. Default false
+      # enable_messaging_system_latency_histogram: false
+      enable_messaging_system_latency_histogram: true
+
     span_metrics:
       enable_target_info: true
     local_blocks:
       filter_server_spans: false
+      flush_to_storage: true
   traces_storage:
     path: /tmp/tempo/generator/traces
