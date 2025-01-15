@@ -2123,13 +2123,13 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Service details",
-  "uid": "ee5faal2qgxkwe",
+  "uid": "o11ytk-service-details",
   "version": 30,
   "weekStart": ""
 }

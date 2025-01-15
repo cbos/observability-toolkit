@@ -616,7 +616,7 @@
           "expr": "histogram_quantile(0.5, sum by(le) (rate(k6_http_req_duration_milliseconds_bucket{test_id=~\"$test_id\"}[$__rate_interval])))",
           "format": "time_series",
           "hide": false,
-          "legendFormat": "99th percentile",
+          "legendFormat": "50th percentile",
           "range": true,
           "refId": "B"
         },
@@ -1613,13 +1613,13 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "K6 Load Test",
-  "uid": "c6385102-db6d-4698-a0f8-80d37c11b8c8",
+  "uid": "o11ytk-k6-load-test",
   "version": 11,
   "weekStart": ""
 }
