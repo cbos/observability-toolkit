@@ -43,8 +43,10 @@ Also the setup of spanmetrics and servicegraph is already configured (see [tempo
 ```shell
 git clone https://github.com/cbos/observability-toolkit
 cd observability-toolkit
-docker-compose up -d 
+docker compose up -d  
 
+# If you have just command runner installed you can run:
+just up
 ```
 Now you can open http://localhost:3000 to open Grafana.
 
@@ -102,7 +104,7 @@ An number of settings can be tweaked by just setting environment variables.
 export GRAFANA_HOST_PORT=3004
 
 # Start the stack (in the background with -d)
-docker-compose up -d 
+docker compose up -d 
 
 # Now you can open Grafana at http://localhost:3004
 ```
