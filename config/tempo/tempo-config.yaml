@@ -6,7 +6,9 @@ distributor:
     otlp:
       protocols:
         grpc:
+          endpoint: "tempo:4317"
         http:
+          endpoint: "tempo:4318"
 
 ingester:
   trace_idle_period: 35s
@@ -24,6 +26,12 @@ overrides:
 server:
   http_listen_port: 3200
   log_level: info
+
+query_frontend:
+  search:
+    # The maximum allowed value of spans per span set. 0 disables this limit.
+    # This limits the number of spans returned when the Span Limit field is used in Explore
+    max_spans_per_span_set: 500
 
 storage:
   trace:
