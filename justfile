@@ -13,7 +13,8 @@ default:
 
 # Start services (and build if needed)
 up:
-    {{CONTAINER_EXECUTABLE}} {{COMPOSE_FILE}} up -d --build
+    touch .env.override
+    {{CONTAINER_EXECUTABLE}} {{COMPOSE_FILE}} --env-file .env --env-file .env.override up -d --build
 
 # Start services (without recreate or build)
 start:
