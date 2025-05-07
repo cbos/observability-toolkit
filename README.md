@@ -1,5 +1,6 @@
 <div align="center">
-  <img src="./docs/logo.png" alt="Observability Toolkit"/>
+  <img src="./docs/logo.png" alt="Observability Toolkit"/><BR>
+  <img src="https://goto.ceesbos.nl/badge/github/cbos/observability-toolkit" alt="Badge"/>
 </div>
 
 # Observability Toolkit for local usage
