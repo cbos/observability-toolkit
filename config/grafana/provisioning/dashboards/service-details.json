@@ -2094,7 +2094,7 @@
     }
   ],
   "preload": false,
-  "refresh": "5s",
+  "refresh": "30s",
   "schemaVersion": 40,
   "tags": [
     "JVM",
