@@ -2080,7 +2080,7 @@
                 "uid": "loki"
               },
               "editorMode": "code",
-              "expr": "{service_name=`$service`} | json | logfmt | drop __error__, __error_details__",
+              "expr": "{service_name=`$service`} | logfmt | line_format `\u001B[1m{{if .level }}{{alignRight 5 .level}}{{else if .severity_text}}{{alignRight 5 .severity_text}}{{end}}\u001B[0m \u001B[90m[{{alignRight 10 .service_instance_id}}{{if .thread_name}}/{{alignRight 20 .thread_name}}{{else if eq \"java\" .telemetry_sdk_language }}                    {{end}}]\u001B[0m \u001B[36m{{if .scope_name }}{{alignRight 40 .scope_name}}{{end}}{{if .exception_type}} \u001B[1;101m \u001B[0m{{end}} {{if .exception_type}}\u001B[1;91m{{.exception_type}}\u001B[0m{{end}}{{if .exception_message}} \u001B[1;91m{{.exception_message}}\u001B[0m {{end}} \u001B[0m {{__line__}} {{if .trace_id}} \u001B[37m\u001B[3m[trace_id={{.trace_id}}]{{end}}`",
               "queryType": "range",
               "refId": "logs"
             }
