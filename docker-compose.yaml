@@ -92,7 +92,6 @@ services:
       GF_AUTH_DISABLE_LOGIN_FORM: true
       GF_USERS_VIEWERS_CAN_EDIT: true
       GF_USERS_EDITORS_CAN_ADMIN: true
-      GF_INSTALL_PLUGINS: https://storage.googleapis.com/integration-artifacts/grafana-exploretraces-app/grafana-exploretraces-app-latest.zip;grafana-traces-app,pyroscope-panel
       GF_FEATURE_TOGGLES_ENABLE: tempoSearch tempoBackendSearch tempoServiceGraph tempoApmTable traceToMetrics newTraceViewHeader metricsSummary correlations traceToProfiles tracesEmbeddedFlameGraph grafanaconThemes
     labels:
       quarkus.observability.lgtm.service-name: "lgtm"
