@@ -42,6 +42,8 @@ exporters:
 #    resource_to_telemetry_conversion:
 #      enabled: true
 
+connectors:
+  exceptions:
 
 processors:
   batch:
@@ -58,7 +60,7 @@ service:
       processors:
         - batch
         - memory_limiter
-      exporters: [otlp/tempo]
+      exporters: [otlp/tempo, exceptions]
     metrics/otel-collector:
       receivers: [ prometheus/otel ]
       processors:
@@ -66,7 +68,7 @@ service:
         - memory_limiter
       exporters: [ prometheusremotewrite ]
     metrics:
-      receivers: [otlp]
+      receivers: [otlp, exceptions]
       processors:
         - batch
         - memory_limiter
