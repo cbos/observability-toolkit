@@ -2,5 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update _IMAGE_NAME variables in .env",
+      "managerFilePatterns": [
+        "/\\env$/"
+      ],
+      "matchStrings": [
+        ".+?_IMAGE_NAME=(?<packageName>.+?):(?<currentValue>.+?)\\\\s"
+      ],
+      "datasourceTemplate": "docker"
+    }
   ]
 }
