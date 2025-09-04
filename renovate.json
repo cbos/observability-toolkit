@@ -11,7 +11,7 @@
         "/\\.env$/"
       ],
       "matchStrings": [
-        ".+?_IMAGE_NAME=(?<packageName>.+?):(?<currentValue>.+?)\\\\s"
+        ".+?_IMAGE_NAME=(?<packageName>.+?):(?<currentValue>.+?)\\s"
       ],
       "datasourceTemplate": "docker"
     }
