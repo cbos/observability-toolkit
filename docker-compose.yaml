@@ -4,7 +4,7 @@ services:
   loki:
     image: "${LOKI_IMAGE_NAME}"
     healthcheck:
-      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3100/ready || exit 1" ]
+      test: [ "CMD", "wget", "-q", "--spider", "http://localhost:3100/ready" ]
       start_period: 20s
       interval: 10s
       timeout: 5s
@@ -31,11 +31,11 @@ services:
   tempo:
     image: *tempoImage
     healthcheck:
-      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3200/ready || exit 1" ]
+      test: [ "CMD", "wget", "-q", "--spider", "http://localhost:3200/ready" ]
       start_period: 20s
-      interval: 10s
+      interval: 15s
       timeout: 5s
-      retries: 5
+      retries: 10
     command: [ "-config.file=/etc/tempo.yaml" ]
     restart: unless-stopped
     volumes:
