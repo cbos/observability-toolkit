@@ -7,6 +7,15 @@ server:
   # Write timeout for HTTP server
   http_server_write_timeout: 3m
 
+  # Limit on the size of a gRPC message this server can receive (bytes).
+  # default 4194304 = 4MB
+  # 10485760 = 10MB
+  grpc_server_max_recv_msg_size: 10485760
+
+  # Limit on the size of a gRPC message this server can send (bytes).
+  # default 4194304 = 4MB
+  grpc_server_max_send_msg_size: 10485760
+
 common:
   instance_addr: 127.0.0.1
   path_prefix: /loki
