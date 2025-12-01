@@ -1,9 +1,11 @@
 #!/bin/bash
 
-OTEL_VERSION=2.3.0
-PYROSCOPE_VERSION=0.12.2
-OTEL_PYROSCOPE_VERSION=0.10.1.11
+OTEL_VERSION=2.22.0
+PYROSCOPE_VERSION=2.1.2
+OTEL_PYROSCOPE_VERSION=1.0.4
 JAR_NAME=observability-demo-app-0.0.1-SNAPSHOT.jar
+
+# See https://github.com/grafana/pyroscope/blob/main/examples/tracing/java/Dockerfile as example
 
 cd observability-demo-app
 if [[ ! -f ./target/${JAR_NAME} ]] ; then
@@ -20,7 +22,7 @@ fi
 
 if [[ ! -f ./pyroscope-otel.jar ]] ; then
   echo "Downloading Pyroscope otel integration"
-  curl -sL -o pyroscope-otel.jar  https://repo1.maven.org/maven2/io/pyroscope/otel/${OTEL_PYROSCOPE_VERSION}/otel-${OTEL_PYROSCOPE_VERSION}.jar pyroscope-otel.jar
+  curl -sL -o pyroscope-otel.jar  https://github.com/grafana/otel-profiling-java/releases/download/v${OTEL_PYROSCOPE_VERSION}/pyroscope-otel.jar pyroscope-otel.jar
 fi
 
 export OTEL_EXPORTER_OTLP_PROTOCOL=grpc
