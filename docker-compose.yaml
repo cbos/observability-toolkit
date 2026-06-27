@@ -19,7 +19,7 @@ services:
   # Tempo runs as user 10001, and docker compose creates the volume as root.
   # As such, we need to chown the volume in order for Tempo to start correctly.
   tempo-init:
-    image: &tempoImage ${TEMPO_IMAGE_NAME}
+    image: ${BUSYBOX_IMAGE_NAME}
     user: root
     entrypoint:
       - "chown"
@@ -29,7 +29,7 @@ services:
       - data-tempo:/var/tempo
 
   tempo:
-    image: *tempoImage
+    image: ${TEMPO_IMAGE_NAME}
     healthcheck:
       test: [ "CMD", "wget", "-q", "--spider", "http://localhost:3200/ready" ]
       start_period: 20s
